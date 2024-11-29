@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  mymoney-database:
+    image: postgres:17.2
+    container_name: MyMoney-DataBase
+    environment:
+      POSTGRES_DB: mymoney-postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mymoneyapp
+    ports:
+      - "5432:5432"
+    networks:
+      - mymoney-network
+
+networks:
+  mymoney-network:
