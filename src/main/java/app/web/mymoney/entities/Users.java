@@ -1,5 +1,6 @@
 package app.web.mymoney.entities;
 
+import app.web.mymoney.enums.RoleEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,7 +36,8 @@ public class Users {
     private String password;
 
     @Column(name = "role")
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private RoleEnum role;
 
     @Column(name = "created_at")
     private LocalDate createdAt;
@@ -53,6 +55,7 @@ public class Users {
     protected void onCreate() {
         this.createdAt = LocalDate.now();
         this.updatedAt = LocalDate.now();
+        this.role = RoleEnum.USER;
     }
 
     @PreUpdate
