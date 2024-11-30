@@ -1,6 +1,7 @@
 package app.web.mymoney.services.impl;
 
 import app.web.mymoney.DTOs.request.UserRequestDTO;
+import app.web.mymoney.DTOs.response.AccountResponseDTO;
 import app.web.mymoney.DTOs.response.UserResponseDTO;
 import app.web.mymoney.entities.Users;
 import app.web.mymoney.repositories.UserRepository;
@@ -21,11 +22,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponseDTO createUser(UserRequestDTO userRequestDTO) {
 
-        Users user = userRequestDTO.toEntity();
+        Users user = userRequestDTO.toEntity(userRequestDTO);
 
         user = userRepository.save(user);
 
-        accountService.createAccount("Carteira", user.getId(), BigDecimal.ZERO);
+        accountService.createAccount("Carteira", user, BigDecimal.ZERO);
 
         return new UserResponseDTO(user);
     }

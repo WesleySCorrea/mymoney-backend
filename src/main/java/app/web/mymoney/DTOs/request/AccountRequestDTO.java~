@@ -1,0 +1,16 @@
+package app.web.mymoney.DTOs.request;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import java.math.BigDecimal;
+
+@Getter
+@Setter
+public class AccountRequestDTO {
+
+    private String name;
+    private Long userId;
+    private BigDecimal balance = BigDecimal.ZERO;
+
+}

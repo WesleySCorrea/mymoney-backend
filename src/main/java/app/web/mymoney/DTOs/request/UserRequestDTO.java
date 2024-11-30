@@ -26,12 +26,12 @@ public class UserRequestDTO {
     @Size(min = 8, message = "Password must be at least 8 characters long.")
     private String password;
 
-    public Users toEntity(UserRequestDTO userRequestDTO) {
+    public Users toEntity() {
         Users user = new Users();
-        user.setName(userRequestDTO.getName());
-        user.setSurname(userRequestDTO.getSurname());
-        user.setEmail(userRequestDTO.getEmail());
-        user.setPassword(userRequestDTO.getPassword());
+        user.setName(name);
+        user.setSurname(surname);
+        user.setEmail(email);
+        user.setPassword(password);
         return user;
     }
 }

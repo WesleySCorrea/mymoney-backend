@@ -1,8 +1,8 @@
 package app.web.mymoney.services.impl;
 
+import app.web.mymoney.DTOs.request.CategoryRequestDTO;
 import app.web.mymoney.DTOs.response.CategoryResponseDTO;
 import app.web.mymoney.entities.Categories;
-import app.web.mymoney.entities.Users;
 import app.web.mymoney.repositories.CategoryRepository;
 import app.web.mymoney.services.CategoryService;
 import lombok.AllArgsConstructor;
@@ -14,14 +14,9 @@ public class CategoryServiceImpl implements CategoryService {
 
     private final CategoryRepository categoryRepository;
     @Override
-    public CategoryResponseDTO createCategory(Long userId, String name) {
+    public CategoryResponseDTO createCategory(CategoryRequestDTO categoryRequestDTO) {
 
-        Categories category = new Categories();
-        Users user = new Users();
-        user.setId(userId);
-
-        category.setName(name);
-        category.setUser(user);
+        Categories category = categoryRequestDTO.toEntity();
 
         category = categoryRepository.save(category);
 
