@@ -1,0 +1,2 @@
+package app.web.mymoney.DTOs.response;public class CategoryResponseDTO {
+}

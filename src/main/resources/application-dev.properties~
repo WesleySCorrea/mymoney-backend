@@ -2,7 +2,7 @@
 spring.application.name=mymoney
 
 # Configurações do banco de dados
-spring.datasource.url=jdbc:postgresql://localhost:5432/mymoney-postgres
+spring.datasource.url=jdbc:postgresql://localhost:8745/mymoney-postgres
 spring.datasource.username=postgres
 spring.datasource.password=mymoneyapp
 spring.datasource.driver-class-name=org.postgresql.Driver

@@ -1,0 +1,2 @@
+package app.web.mymoney.repositories;public interface CategoryRepository {
+}
