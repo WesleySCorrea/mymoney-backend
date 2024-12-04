@@ -18,6 +18,10 @@ public class UserRequestDTO {
     @Size(min = 5, max = 50, message = "Surname must be between 5 and 50 characters.")
     private String surname;
 
+    @NotBlank(message = "Username is required.")
+    @Size(min = 5, max = 50, message = "Username must be between 5 and 50 characters.")
+    private String username;
+
     @NotBlank(message = "Email is required.")
     @Email(message = "Email is not valid.")
     private String email;
@@ -30,6 +34,7 @@ public class UserRequestDTO {
         Users user = new Users();
         user.setName(name);
         user.setSurname(surname);
+        user.setUsername(username);
         user.setEmail(email);
         user.setPassword(password);
         return user;

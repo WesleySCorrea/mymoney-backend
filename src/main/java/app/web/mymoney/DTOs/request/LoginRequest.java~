@@ -1,0 +1,2 @@
+package app.web.mymoney.DTOs.request;public class LoginRequest {
+}

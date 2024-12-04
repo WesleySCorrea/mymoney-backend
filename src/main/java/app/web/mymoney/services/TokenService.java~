@@ -1,0 +1,9 @@
+package app.web.mymoney.services;
+
+import app.web.mymoney.entities.Users;
+
+public interface TokenService {
+    String generateAccessToken(Users user);
+    String generateRefreshToken(Users user);
+
+}

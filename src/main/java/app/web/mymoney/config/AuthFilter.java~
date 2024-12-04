@@ -1,0 +1,56 @@
+package app.web.mymoney.config;
+
+import app.web.mymoney.entities.Users;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class AuthFilter extends OncePerRequestFilter {
+    private final String SECRET_KEY = "your-secret-key"; // Chave secreta para validar o token
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
+
+        String jwt = getJwtFromRequest(request);
+
+        if (jwt != null && validateToken(jwt)) {
+            String username = extractUsername(jwt);
+
+            Users userAuthentication =
+                    new Users(username, null, new ArrayList<>());
+
+            SecurityContextHolder.getContext().setAuthentication(userAuthentication); // Preenche o contexto de segurança
+        }
+
+        filterChain.doFilter(request, response);
+    }
+
+    private String getJwtFromRequest(HttpServletRequest request) {
+        String bearerToken = request.getHeader("Authorization");
+        if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
+            return bearerToken.substring(7);
+        }
+        return null;
+    }
+
+    private boolean validateToken(String token) {
+        try {
+            Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token); // Valida o token
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    private String extractUsername(String token) {
+        return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody().getSubject();
+    }
+}
+}

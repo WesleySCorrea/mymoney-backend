@@ -11,6 +11,7 @@ public class UserResponseDTO {
     private Long id;
     private String name;
     private String surname;
+    private String username;
     private String email;
     private String createdAt;
 
@@ -18,6 +19,7 @@ public class UserResponseDTO {
         this.id = user.getId();
         this.name = user.getName();
         this.surname = user.getSurname();
+        this.username = user.getUsername();
         this.email = user.getEmail();
         this.createdAt = user.getCreatedAt().toString();
     }
