@@ -55,7 +55,18 @@ public class TokenServiceImpl implements TokenService {
                 .sign(Algorithm.HMAC256(SECRET_KEY));
     }
 
-    public UserInfoDTO validateTokenAndExtractUserInfo(String token) {
+    public void validateToken(String accessToken) {
+        try {
+            JWT.require(Algorithm.HMAC256(SECRET_KEY))
+                    .build()
+                    .verify(accessToken);
+        } catch (JWTVerificationException e) {
+            // Aqui lançamos uma exceção comum para parar a aplicação
+            throw new RuntimeException("Token inválido ou expirado: " + e.getMessage(), e);
+        }
+    }
+
+    public static UserInfoDTO extractUserInfoFromToken(String token) {
         try {
             JWTVerifier verifier = JWT.require(Algorithm.HMAC256(SECRET_KEY))
                     .build();
@@ -75,21 +86,8 @@ public class TokenServiceImpl implements TokenService {
             return userInfoDTO;
         } catch (Exception e) {
             throw new RuntimeException("Erro ao extrair informações do token: " + e.getMessage(), e);
+
         }
-    }
-
-    public void validateToken(String accessToken) {
-        try {
-            JWT.require(Algorithm.HMAC256(SECRET_KEY))
-                    .build()
-                    .verify(accessToken);
-        } catch (JWTVerificationException e) {
-            // Aqui lançamos uma exceção comum para parar a aplicação
-            throw new RuntimeException("Token inválido ou expirado: " + e.getMessage(), e);
-        }
-    }
-
-
 //
 //    // Método para extrair o username ou email do token
 //    public String extractUsernameOrEmail(String token) {
