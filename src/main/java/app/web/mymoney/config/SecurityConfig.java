@@ -30,7 +30,7 @@ public class SecurityConfig {
           http.csrf(AbstractHttpConfigurer::disable)
                  .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                .authorizeHttpRequests(authz -> authz
-               .requestMatchers( HttpMethod.POST,"/login").permitAll()
+               .requestMatchers( HttpMethod.POST,"/login", "/login/refresh").permitAll()
                .requestMatchers( HttpMethod.POST,"/user").hasRole("ADMIN")
                .anyRequest().authenticated())
                  .addFilterBefore(jwtFilter, BasicAuthenticationFilter.class)

@@ -7,21 +7,16 @@ import app.web.mymoney.enums.RoleEnum;
 import app.web.mymoney.services.TokenService;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.nio.charset.StandardCharsets;
-import java.security.Key;
 import java.util.Date;
 
 @Service
 @AllArgsConstructor
 public class TokenServiceImpl implements TokenService {
-
-//    private static final String SECRET_KEY = "MyMoneySecretyWith32Characters2024";
     private static final String SECRET_KEY = "My-Money-Secrety";
     private static final long EXPIRATION_TIME = 3600000;
     private static final long REFRESH_TOKEN_EXPIRATION_TIME = 36000000;
@@ -78,35 +73,15 @@ public class TokenServiceImpl implements TokenService {
         }
     }
 
-    public void validateToken(String accessToken) {
+    public String validateRefreshTokenAndExtractUserName(String token) {
         try {
-            JWT.require(Algorithm.HMAC256(SECRET_KEY))
-                    .build()
-                    .verify(accessToken);
-        } catch (JWTVerificationException e) {
-            // Aqui lançamos uma exceção comum para parar a aplicação
-            throw new RuntimeException("Token inválido ou expirado: " + e.getMessage(), e);
+            JWTVerifier verifier = JWT.require(Algorithm.HMAC256(SECRET_KEY))
+                    .build();
+            DecodedJWT decodedJWT = verifier.verify(token);
+
+            return decodedJWT.getSubject();
+        } catch (Exception e) {
+            throw new RuntimeException("Erro ao extrair informações do refresh token: " + e.getMessage(), e);
         }
     }
-
-
-//
-//    // Método para extrair o username ou email do token
-//    public String extractUsernameOrEmail(String token) {
-//        return Jwts.parser()
-//                .setSigningKey(SECRET_KEY)
-//                .parseClaimsJws(token)
-//                .getBody()
-//                .getSubject();
-//    }
-//
-//    // Método para verificar se o token está expirado
-//    public boolean isTokenExpired(String token) {
-//        Date expiration = Jwts.parser()
-//                .setSigningKey(SECRET_KEY)
-//                .parseClaimsJws(token)
-//                .getBody()
-//                .getExpiration();
-//        return expiration.before(new Date());
-//    }
 }

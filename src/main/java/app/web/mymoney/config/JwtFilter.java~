@@ -24,7 +24,7 @@ public class JwtFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-        if (request.getRequestURI().equals("/v1/login")) {
+        if (request.getRequestURI().equals("/v1/login/refresh")) {
             // Se for o login, não precisa validar o token, apenas passa a requisição adiante
             filterChain.doFilter(request, response);
             return;
@@ -41,6 +41,7 @@ public class JwtFilter extends OncePerRequestFilter {
                                 null,
                                 List.of(new SimpleGrantedAuthority("ROLE_" + userInfoDTO.getRole().name()))
                         );
+            System.out.println(authentication);
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
             } catch(Exception ex){

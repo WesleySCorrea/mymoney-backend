@@ -1,7 +1,6 @@
 package app.web.mymoney.controllers;
 
 import app.web.mymoney.DTOs.request.LoginRequest;
-import app.web.mymoney.DTOs.request.RefreshRequestDTO;
 import app.web.mymoney.DTOs.response.LoginResponse;
 import app.web.mymoney.services.LoginService;
 import lombok.RequiredArgsConstructor;
@@ -23,15 +22,7 @@ public class LoginController {
     @PostMapping
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
 
-        LoginResponse loginResponse = loginService.login(loginRequest);
-
-        return ResponseEntity.ok(loginResponse);
-    }
-
-    @PostMapping("/refresh")
-    public ResponseEntity<LoginResponse> refreshToken(@RequestBody RefreshRequestDTO refreshRequest) {
-
-        LoginResponse loginResponse = loginService.loginWithRefresh(refreshRequest);
+        LoginResponse loginResponse = loginService.loginService(loginRequest);
 
         return ResponseEntity.ok(loginResponse);
     }
