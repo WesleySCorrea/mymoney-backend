@@ -26,3 +26,17 @@ CREATE TABLE categories (
     created_at DATE NOT NULL,
     updated_at DATE NOT NULL
 );
+
+CREATE TABLE launch (
+    id SERIAL PRIMARY KEY,
+    description VARCHAR(100) NOT NULL,
+    amount NUMERIC(15, 2) NOT NULL,
+    type_moviment VARCHAR(50),
+    category_id BIGINT NOT NULL REFERENCES categories(id) ON DELETE CASCADE,
+    user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    account_id BIGINT NOT NULL REFERENCES accounts(id) ON DELETE CASCADE,
+    payment_date DATE NOT NULL,
+    created_at DATE NOT NULL DEFAULT CURRENT_DATE,
+    updated_at DATE NOT NULL DEFAULT CURRENT_DATE,
+    is_transfer BOOLEAN DEFAULT FALSE
+);

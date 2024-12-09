@@ -1,7 +1,8 @@
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    surname VARCHAR(100) NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    surname VARCHAR(50) NOT NULL,
+    username VARCHAR(50) NOT NULL UNIQUE,
     email VARCHAR(150) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     role VARCHAR(50) NOT NULL,
@@ -24,4 +25,18 @@ CREATE TABLE categories (
     name VARCHAR(100) NOT NULL,
     created_at DATE NOT NULL,
     updated_at DATE NOT NULL
+);
+
+CREATE TABLE launch (
+    id SERIAL PRIMARY KEY,
+    description VARCHAR(100) NOT NULL,
+    amount NUMERIC(15, 2) NOT NULL,
+    type_moviment VARCHAR(50),
+    category_id BIGINT NOT NULL REFERENCES categories(id) ON DELETE CASCADE,
+    user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    account_id BIGINT NOT NULL REFERENCES accounts(id) ON DELETE CASCADE,
+    payment_date DATE,
+    created_at DATE NOT NULL DEFAULT CURRENT_DATE,
+    updated_at DATE NOT NULL DEFAULT CURRENT_DATE,
+    is_transfer BOOLEAN DEFAULT FALSE
 );

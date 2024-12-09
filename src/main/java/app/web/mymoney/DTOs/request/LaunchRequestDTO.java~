@@ -1,0 +1,21 @@
+package app.web.mymoney.DTOs.request;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+@Getter
+@Setter
+public class LaunchRequestDTO {
+
+    private String description;
+    private BigDecimal amount;
+    private String typeMoviment;
+    private Long categoryId;
+    private Long userId;
+    private Long accountId;
+    private LocalDate paymentDate;
+    private Boolean isTransfer;
+}
