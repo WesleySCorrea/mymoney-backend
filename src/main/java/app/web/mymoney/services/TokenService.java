@@ -1,6 +1,5 @@
 package app.web.mymoney.services;
 
-import app.web.mymoney.DTOs.request.RefreshRequestDTO;
 import app.web.mymoney.DTOs.request.UserInfoDTO;
 import app.web.mymoney.DTOs.response.LoginResponse;
 import app.web.mymoney.entities.Users;
