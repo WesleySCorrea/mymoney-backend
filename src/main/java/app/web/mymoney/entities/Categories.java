@@ -1,5 +1,6 @@
 package app.web.mymoney.entities;
 
+import app.web.mymoney.enums.MovementEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,6 +24,10 @@ public class Categories {
 
     @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "type_category", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private MovementEnum typeCategory;
 
     @Column(name = "created_at")
     private LocalDate createdAt;

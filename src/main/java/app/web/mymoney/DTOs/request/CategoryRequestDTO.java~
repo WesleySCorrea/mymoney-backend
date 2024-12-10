@@ -2,7 +2,6 @@ package app.web.mymoney.DTOs.request;
 
 import app.web.mymoney.entities.Categories;
 import app.web.mymoney.entities.Users;
-import app.web.mymoney.enums.MovementEnum;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,7 +19,6 @@ public class CategoryRequestDTO {
         user.setId(userId);
 
         category.setName(name);
-        category.setTypeCategory(MovementEnum.valueOf(typeCategory));
         category.setUser(user);
         return category;
     }

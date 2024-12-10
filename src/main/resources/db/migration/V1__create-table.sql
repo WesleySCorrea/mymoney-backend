@@ -23,6 +23,7 @@ CREATE TABLE categories (
     id SERIAL PRIMARY KEY,
     user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     name VARCHAR(100) NOT NULL,
+    type_category VARCHAR(50) NOT NULL,
     created_at DATE NOT NULL,
     updated_at DATE NOT NULL
 );

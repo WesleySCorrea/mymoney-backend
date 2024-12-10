@@ -35,7 +35,7 @@ CREATE TABLE launch (
     category_id BIGINT NOT NULL REFERENCES categories(id) ON DELETE CASCADE,
     user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     account_id BIGINT NOT NULL REFERENCES accounts(id) ON DELETE CASCADE,
-    payment_date DATE,
+    payment_date DATE NOT NULL,
     created_at DATE NOT NULL DEFAULT CURRENT_DATE,
     updated_at DATE NOT NULL DEFAULT CURRENT_DATE,
     is_transfer BOOLEAN DEFAULT FALSE
