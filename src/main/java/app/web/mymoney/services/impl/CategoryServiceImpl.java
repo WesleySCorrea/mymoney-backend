@@ -1,7 +1,7 @@
 package app.web.mymoney.services.impl;
 
-import app.web.mymoney.DTOs.request.CategoryRequestDTO;
-import app.web.mymoney.DTOs.response.CategoryResponseDTO;
+import app.web.mymoney.DTOs.request.category.CategoryRequestDTO;
+import app.web.mymoney.DTOs.response.category.CategoryResponseDTO;
 import app.web.mymoney.entities.Categories;
 import app.web.mymoney.repositories.CategoryRepository;
 import app.web.mymoney.services.CategoryService;

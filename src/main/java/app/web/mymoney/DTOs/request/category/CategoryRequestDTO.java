@@ -1,4 +1,4 @@
-package app.web.mymoney.DTOs.request;
+package app.web.mymoney.DTOs.request.category;
 
 import app.web.mymoney.entities.Categories;
 import app.web.mymoney.entities.Users;

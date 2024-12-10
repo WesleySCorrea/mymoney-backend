@@ -1,8 +1,8 @@
 package app.web.mymoney.services.impl;
 
-import app.web.mymoney.DTOs.request.LoginRequest;
-import app.web.mymoney.DTOs.request.RefreshRequestDTO;
-import app.web.mymoney.DTOs.response.LoginResponse;
+import app.web.mymoney.DTOs.request.login.LoginRequest;
+import app.web.mymoney.DTOs.request.login.RefreshRequestDTO;
+import app.web.mymoney.DTOs.response.login.LoginResponse;
 import app.web.mymoney.entities.Users;
 import app.web.mymoney.repositories.UserRepository;
 import app.web.mymoney.services.LoginService;

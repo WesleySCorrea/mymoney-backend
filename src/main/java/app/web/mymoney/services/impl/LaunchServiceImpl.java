@@ -1,7 +1,7 @@
 package app.web.mymoney.services.impl;
 
-import app.web.mymoney.DTOs.request.LaunchRequestDTO;
-import app.web.mymoney.DTOs.response.LaunchResponseDTO;
+import app.web.mymoney.DTOs.request.launch.LaunchRequestDTO;
+import app.web.mymoney.DTOs.response.launch.LaunchResponseDTO;
 import app.web.mymoney.entities.Launch;
 import app.web.mymoney.repositories.LaunchRepository;
 import app.web.mymoney.services.LaunchService;

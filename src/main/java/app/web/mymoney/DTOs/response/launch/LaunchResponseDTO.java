@@ -1,4 +1,4 @@
-package app.web.mymoney.DTOs.response;
+package app.web.mymoney.DTOs.response.launch;
 
 import app.web.mymoney.entities.Launch;
 import lombok.Getter;

@@ -1,7 +1,7 @@
 package app.web.mymoney.services.impl;
 
-import app.web.mymoney.DTOs.request.UserRequestDTO;
-import app.web.mymoney.DTOs.response.UserResponseDTO;
+import app.web.mymoney.DTOs.request.user.UserRequestDTO;
+import app.web.mymoney.DTOs.response.user.UserResponseDTO;
 import app.web.mymoney.entities.Users;
 import app.web.mymoney.repositories.UserRepository;
 import app.web.mymoney.services.AccountService;

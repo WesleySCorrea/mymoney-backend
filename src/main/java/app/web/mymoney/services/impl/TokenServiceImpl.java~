@@ -7,7 +7,6 @@ import app.web.mymoney.enums.RoleEnum;
 import app.web.mymoney.services.TokenService;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
 import lombok.AllArgsConstructor;
@@ -19,7 +18,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class TokenServiceImpl implements TokenService {
     private static final String SECRET_KEY = "My-Money-Secrety";
-    private static final long EXPIRATION_TIME = 10000;
+    private static final long EXPIRATION_TIME = 3600000;
     private static final long REFRESH_TOKEN_EXPIRATION_TIME = 36000000;
 
     public LoginResponse generateAccessToken(Users user) {

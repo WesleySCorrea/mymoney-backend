@@ -1,6 +1,6 @@
 package app.web.mymoney.config;
 
-import app.web.mymoney.DTOs.request.user.UserInfoDTO;
+import app.web.mymoney.DTOs.request.UserInfoDTO;
 import app.web.mymoney.services.TokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

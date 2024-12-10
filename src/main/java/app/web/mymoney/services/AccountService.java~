@@ -1,6 +1,6 @@
 package app.web.mymoney.services;
 
-import app.web.mymoney.DTOs.response.account.AccountResponseDTO;
+import app.web.mymoney.DTOs.response.AccountResponseDTO;
 
 import java.math.BigDecimal;
 

@@ -1,7 +1,7 @@
 package app.web.mymoney.controllers;
 
-import app.web.mymoney.DTOs.request.UserRequestDTO;
-import app.web.mymoney.DTOs.response.UserResponseDTO;
+import app.web.mymoney.DTOs.request.user.UserRequestDTO;
+import app.web.mymoney.DTOs.response.user.UserResponseDTO;
 import app.web.mymoney.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

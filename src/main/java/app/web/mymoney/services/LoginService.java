@@ -1,8 +1,8 @@
 package app.web.mymoney.services;
 
-import app.web.mymoney.DTOs.request.LoginRequest;
-import app.web.mymoney.DTOs.request.RefreshRequestDTO;
-import app.web.mymoney.DTOs.response.LoginResponse;
+import app.web.mymoney.DTOs.request.login.LoginRequest;
+import app.web.mymoney.DTOs.request.login.RefreshRequestDTO;
+import app.web.mymoney.DTOs.response.login.LoginResponse;
 
 public interface LoginService {
 

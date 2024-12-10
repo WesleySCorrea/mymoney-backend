@@ -1,8 +1,8 @@
 package app.web.mymoney.controllers;
 
-import app.web.mymoney.DTOs.request.LoginRequest;
-import app.web.mymoney.DTOs.request.RefreshRequestDTO;
-import app.web.mymoney.DTOs.response.LoginResponse;
+import app.web.mymoney.DTOs.request.login.LoginRequest;
+import app.web.mymoney.DTOs.request.login.RefreshRequestDTO;
+import app.web.mymoney.DTOs.response.login.LoginResponse;
 import app.web.mymoney.services.LoginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
