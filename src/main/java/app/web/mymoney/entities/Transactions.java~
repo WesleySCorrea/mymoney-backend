@@ -1,6 +1,5 @@
 package app.web.mymoney.entities;
 
-import app.web.mymoney.enums.MovementEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,8 +14,8 @@ import java.time.LocalDate;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "launch")
-public class Launch {
+@Table(name = "transactions")
+public class Transactions {
 
     @Id
     @Column(name = "id")
@@ -29,30 +28,23 @@ public class Launch {
     @Column(name = "amount", nullable = false)
     private BigDecimal amount;
 
-    @Column(name = "type_moviment")
-    @Enumerated(EnumType.STRING)
-    private MovementEnum typeMoviment;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id", nullable = false)
-    private Categories categoryId;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private Users userId;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "account_id", nullable = false)
-    private Accounts accountId;
-
-    @Column(name = "payment_date")
-    private LocalDate paymentDate;
-
     @Column(name = "created_at")
     private LocalDate createdAt;
 
     @Column(name = "updated_at")
     private LocalDate updatedAt;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private Users user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "source_account_id", nullable = false)
+    private Accounts sourceAccount;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "destination_account_id", nullable = false)
+    private Accounts destinationAccount;
 
     @Column(name = "is_transfer")
     private Boolean isTransfer = false;

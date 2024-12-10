@@ -19,6 +19,19 @@ CREATE TABLE accounts (
     updated_at DATE NOT NULL
 );
 
+CREATE TABLE transactions (
+    id SERIAL PRIMARY KEY,
+    description VARCHAR(100) NOT NULL,
+    amount NUMERIC(15, 2) NOT NULL,
+    created_at DATE NOT NULL DEFAULT CURRENT_DATE,
+    updated_at DATE NOT NULL DEFAULT CURRENT_DATE,
+    payment_date DATE NOT NULL,
+    user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    source_account_id BIGINT NOT NULL REFERENCES accounts(id) ON DELETE CASCADE,
+    destination_account_id BIGINT NOT NULL REFERENCES accounts(id) ON DELETE CASCADE,
+    is_transfer BOOLEAN DEFAULT FALSE
+);
+
 CREATE TABLE categories (
     id SERIAL PRIMARY KEY,
     user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE CASCADE,

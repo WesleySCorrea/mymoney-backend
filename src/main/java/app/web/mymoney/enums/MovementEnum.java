@@ -2,6 +2,6 @@ package app.web.mymoney.enums;
 
 public enum MovementEnum {
 
-    REVENUE,
+    INCOME,
     EXPENSE
 }

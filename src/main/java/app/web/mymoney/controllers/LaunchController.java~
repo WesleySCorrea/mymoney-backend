@@ -26,9 +26,9 @@ public class LaunchController {
     }
 
     @GetMapping("/balance")
-    public ResponseEntity<BalanceResponseDTO> findBalance (@RequestParam Integer month, @RequestParam Integer year) {
+    public ResponseEntity<BalanceResponseDTO> findBalance (@RequestHeader BalanceRequestDTO balanceRequestDTO) {
 
-        BalanceResponseDTO balanceResponseDTO = launchService.findBalanceByUserAndDate(month, year);
+        BalanceResponseDTO balanceResponseDTO = launchService.findBalanceByUserAndDate(balanceRequestDTO);
 
         return ResponseEntity.status(HttpStatus.OK).body(balanceResponseDTO);
     }

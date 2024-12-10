@@ -1,7 +1,0 @@
-package app.web.mymoney.enums;
-
-public enum MovementEnum {
-
-    REVENUE,
-    ADMIN
-}

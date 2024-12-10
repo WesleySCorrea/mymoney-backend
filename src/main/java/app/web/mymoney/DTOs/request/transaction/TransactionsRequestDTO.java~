@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -22,9 +21,6 @@ public class TransactionsRequestDTO {
 
     @NotBlank(message = "User is required.")
     private Long userId;
-
-    @NotBlank(message = "Payment date is required.")
-    private LocalDate paymentDate;
 
     @NotBlank(message = "Source account is required.")
     private Long sourceAccountId;
@@ -49,7 +45,6 @@ public class TransactionsRequestDTO {
 
         transaction.setDescription(description);
         transaction.setAmount(amount);
-        transaction.setPaymentDate(paymentDate);
         transaction.setUser(user);
         transaction.setSourceAccount(sourceAccount);
         transaction.setDestinationAccount(destinationAccount);

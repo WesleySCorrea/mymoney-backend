@@ -33,7 +33,7 @@ public class LaunchServiceImpl implements LaunchService {
     }
 
     @Override
-    public BalanceResponseDTO findBalanceByUserAndDate(Integer month, Integer year) {
+    public BalanceResponseDTO findBalanceByUserAndDate(Integer year, Integer month) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserInfoDTO userInfo = (UserInfoDTO) authentication.getDetails();

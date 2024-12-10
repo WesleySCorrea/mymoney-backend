@@ -34,6 +34,9 @@ public class Transactions {
     @Column(name = "updated_at")
     private LocalDate updatedAt;
 
+    @Column(name = "payment_date")
+    private LocalDate paymentDate;
+
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private Users user;
