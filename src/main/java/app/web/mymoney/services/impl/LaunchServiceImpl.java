@@ -45,6 +45,8 @@ public class LaunchServiceImpl implements LaunchService {
         userInfo.getId(),
         startDate, endDate);
 
-        return new BalanceResponseDTO(object.get(0));
+        List<Integer> years = launchRepository.findDistinctYears(userInfo.getId());
+
+        return new BalanceResponseDTO(object.get(0), years);
     }
 }

@@ -1,6 +1,5 @@
 package app.web.mymoney.controllers;
 
-import app.web.mymoney.DTOs.request.transaction.BalanceRequestDTO;
 import app.web.mymoney.DTOs.request.transaction.LaunchRequestDTO;
 import app.web.mymoney.DTOs.response.transaction.BalanceResponseDTO;
 import app.web.mymoney.DTOs.response.transaction.LaunchResponseDTO;

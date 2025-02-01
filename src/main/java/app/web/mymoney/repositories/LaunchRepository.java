@@ -22,4 +22,14 @@ public interface LaunchRepository extends JpaRepository<Launch, Long> {
         WHERE user_id = :userId AND payment_date BETWEEN :startDate AND :endDate
     """, nativeQuery = true)
     List<Object[]> findBalanceByUserAndDate(@Param("userId") Long userId,@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
+
+    @Query(value = "WITH years AS ( " +
+            "    SELECT generate_series( " +
+            "        (SELECT MIN(EXTRACT(YEAR FROM payment_date)::INTEGER) FROM launch where user_id = :userId), " +
+            "        (SELECT MAX(EXTRACT(YEAR FROM payment_date)::INTEGER) FROM launch where user_id = :userId) " +
+            "    ) AS year " +
+            ") " +
+            "SELECT year FROM years " +
+            "ORDER BY year", nativeQuery = true)
+    List<Integer> findDistinctYears(@Param( "userId") Long userId);
 }
